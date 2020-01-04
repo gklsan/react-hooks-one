@@ -15,6 +15,11 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -41,3 +46,19 @@
     -->
   </body>
 </html>
+
+<script>
+  // Selection of HTML objects
+  const burger = document.querySelector('.hamburger i');
+  const nav = document.querySelector('.nav');
+  // Defining a function
+  function toggleNav() {
+    burger.classList.toggle('fa-bars');
+    burger.classList.toggle('fa-times');
+    nav.classList.toggle('nav-active');
+  }
+  // Calling the function after click event occurs
+  burger.addEventListener('click', function() {
+    toggleNav();
+  });
+</script>
