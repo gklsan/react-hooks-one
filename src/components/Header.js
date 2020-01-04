@@ -1,7 +1,7 @@
 import React from "react";
 import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 import Form from "./Form";
-import Dashboard from "./Dashboard";
+import Dashboard from "./Dashboard/Dashboard";
 import WelcomePage from "./WelcomePage";
 
 const Header = () => {

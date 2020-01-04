@@ -72,3 +72,16 @@ code {
     right: 0;
   }
 }
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 1rem 2rem;
+  justify-content: space-around;
+}
+
+.card-item {
+  padding: 2rem;
+  text-align: left;
+}
