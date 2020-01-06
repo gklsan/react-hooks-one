@@ -1,7 +1,9 @@
 import React from "react";
 
-const CardHeader = ({name}) => (
-  <h1 className={"card-header"}>{name}</h1>
+const CardHeader = ({image, name}) => (
+  <div className={"card-logo"}>
+    <img src={image} alt={name}/>
+  </div>
 );
 
 const CardBody = ({id, name, bloodgroup, phone}) => (
@@ -18,7 +20,7 @@ const CardFooter = () => <button>Edit</button>
 const CardContainer = (props) => {
   return(
     <div className={"card-item"}>
-      <CardHeader name={props.name}/>
+      <CardHeader {...props}/>
       <CardBody {...props} />
       <CardFooter />
     </div>
