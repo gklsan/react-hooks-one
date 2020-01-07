@@ -15,14 +15,23 @@ const CardBody = ({id, name, bloodgroup, phone}) => (
   </div>
 );
 
-const CardFooter = () => <button>Edit</button>
+const CardFooter = ({ deleteEmp, id }) => {
+  return(
+    <>
+      <button>Edit</button>
+      <button onClick={() => deleteEmp(id)}>
+        Remove
+      </button>
+    </>
+  )
+}
 
 const CardContainer = (props) => {
   return(
     <div className={"card-item"}>
       <CardHeader {...props}/>
       <CardBody {...props} />
-      <CardFooter />
+      <CardFooter {...props} />
     </div>
   )
 };

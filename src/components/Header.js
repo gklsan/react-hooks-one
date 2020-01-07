@@ -1,6 +1,5 @@
 import React from "react";
 import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
-import Form from "./Form";
 import Dashboard from "./Dashboard/Dashboard";
 import WelcomePage from "./WelcomePage";
 
@@ -17,9 +16,6 @@ const Header = () => {
             <li className="navlink">
               <Link to="/dashboard">Dashboard</Link>
             </li>
-            <li className="navlink">
-              <Link to="/form">Form</Link>
-            </li>
           </ul>
           <div className="hamburger">
             <i className="fas fa-bars"></i>
@@ -29,9 +25,6 @@ const Header = () => {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/form">
-            <Form />
-          </Route>
           <Route path="/dashboard">
             <Dashboard />
           </Route>
