@@ -88,6 +88,7 @@ code {
   box-shadow: 0.2rem 0.2rem #cccccc;
   border-radius: 2rem;
   margin: 1rem;
+  max-width: 12rem;
 }
 
 .card-logo {
@@ -96,4 +97,19 @@ code {
 
 .card-logo img {
   border-radius: 5rem;
+}
+
+form label {
+  display: grid;
+  padding: .4rem 0;
+}
+
+button {
+  background-color: #cccccc;
+  padding: 0.5rem 1rem;
+  border-radius: .5rem;
+  color: black;
+  font-weight: 600;
+  font-size: medium;
+  margin: 0.2rem;
 }
