@@ -30,7 +30,6 @@ const Dashboard = () => {
     <div className={"cards"}>
       {
         empDetails.map((emp, idx) => {
-          const { id = undefined } = emp;
           const img = empImages[idx].thumbnailUrl || "https://via.placeholder.com/150/65ad4f";
           return <CardContainer key={idx} image={img} onFormSubmit={onFormSubmit} deleteEmp={deleteEmp} {...emp}/>
       })}

@@ -31,7 +31,7 @@ const EditBoard = ({id, name, bloodgroup, phone, onFormSubmit, setEdit}) => {
         <input name={"bloodgroup"} onChange={onFieldChange} required value={data.bloodgroup} />
       </label>
 
-      <label> phone
+      <label> Phone
         <input name={"phone"} onChange={onFieldChange} required value={data.phone}/>
       </label>
       <button>
