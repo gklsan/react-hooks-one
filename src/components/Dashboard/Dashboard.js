@@ -6,7 +6,7 @@ import UUID from "uuid";
 const Dashboard = () => {
   const empContext = useContext(EmpContext);
   const empImages = empContext.empImages;
-  const [empDetails, setEmpDetails] = useState([{id: undefined}, ...empContext.empDetails]);
+  const [empDetails, setEmpDetails] = useState(empContext.empDetails);
 
   const deleteEmp = (id) => {
     const updatedEmps = empDetails.filter(emp => emp.id !== id);
@@ -26,12 +26,15 @@ const Dashboard = () => {
     }
   };
 
+  const emps = [{id: undefined}, ...empDetails]
+
   return(
     <div className={"cards"}>
       {
-        empDetails.map((emp, idx) => {
+        emps.map((emp, idx) => {
+          console.log(emp.name)
           const img = empImages[idx].thumbnailUrl || "https://via.placeholder.com/150/65ad4f";
-          return <CardContainer key={idx} image={img} onFormSubmit={onFormSubmit} deleteEmp={deleteEmp} {...emp}/>
+          return <CardContainer key={idx} image={img} newCard={idx === 0} onFormSubmit={onFormSubmit} deleteEmp={deleteEmp} {...emp}/>
       })}
     </div>
   )

@@ -6,23 +6,27 @@ const CardHeader = ({image, name}) => (
   </div>
 );
 
-const CardBody = (props) => (props.edit ? <EditBoard {...props} /> : <DisplayBoard {...props} />);
+const CardBody = (props) => ((props.edit)  ? <EditBoard {...props} /> : <DisplayBoard {...props} />);
 
 const EditBoard = ({id, name, bloodgroup, phone, onFormSubmit, setEdit}) => {
-  const [data, setData] = useState({id, name, bloodgroup, phone});
+  const initialData = {id, name, bloodgroup, phone};
+  const [data, setData] = useState(initialData);
 
   const onFieldChange =(event) => {
     const {name, value} = event.target;
     setData({...data, [name]: value});
   };
 
+  const onSubmit = (event) => {
+    event.preventDefault();
+    onFormSubmit(event, data);
+    setEdit(false);
+    setData({id: undefined, name: '', bloodgroup: '', phone: ''});
+  };
+
   return(
-    <form onSubmit={(event) =>{
-      event.preventDefault();
-      onFormSubmit(event, data);
-      setEdit(false)
-    }}>
-      <input type={'hidden'} value={id} />
+    <form onSubmit={onSubmit}>
+      <input type={'hidden'} value={data.id} />
       <label> Name
         <input name={"name"} onChange={onFieldChange} required value={data.name}/>
       </label>
@@ -39,18 +43,18 @@ const EditBoard = ({id, name, bloodgroup, phone, onFormSubmit, setEdit}) => {
       </button>
     </form>
   )
-}
+};
 
 const DisplayBoard = ({id, name, bloodgroup, phone}) => {
   return(
     <div>
-      <p>ID: {id}</p>
-      <p>Name: {name}</p>
-      <p>Bloodgroup: {bloodgroup}</p>
-      <p>Phone: {phone}</p>
+      <p><strong>ID:</strong> {id}</p>
+      <p><strong>Name:</strong> {name}</p>
+      <p><strong>Bloodgroup:</strong> {bloodgroup}</p>
+      <p><strong>Phone:</strong> {phone}</p>
     </div>
   )
-}
+};
 
 const CardFooter = ({ deleteEmp, id, setEdit, edit }) => {
   if(edit) return <> </>;
@@ -67,14 +71,14 @@ const CardFooter = ({ deleteEmp, id, setEdit, edit }) => {
 }
 
 const CardContainer = (props) => {
-  const initialVal = props.id ? false : true
-  const [edit, setEdit] = useState(initialVal);
+  const [edit, setEdit] = useState(false);
+  const editCard = edit || props.newCard;
 
   return(
     <div className={"card-item"}>
       <CardHeader {...props}/>
-      <CardBody {...props} edit={edit} setEdit={setEdit} />
-      <CardFooter {...props} setEdit={setEdit} edit={edit} />
+      <CardBody {...props} edit={editCard} setEdit={setEdit} />
+      <CardFooter {...props} setEdit={setEdit} edit={editCard} />
     </div>
   )
 };
