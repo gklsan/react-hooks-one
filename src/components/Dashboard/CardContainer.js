@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
-const CardHeader = ({image, name}) => (
+const CardHeader = ({image, name, edit}) => (
   <div className={"card-logo"}>
-    <img src={image} alt={name}/>
+    {
+      edit ? <h1>Add New Emoloyee</h1> : <img src={image} alt={name}/>
+    }
   </div>
 );
 
@@ -76,7 +78,7 @@ const CardContainer = (props) => {
 
   return(
     <div className={"card-item"}>
-      <CardHeader {...props}/>
+      <CardHeader {...props} edit={editCard}/>
       <CardBody {...props} edit={editCard} setEdit={setEdit} />
       <CardFooter {...props} setEdit={setEdit} edit={editCard} />
     </div>
